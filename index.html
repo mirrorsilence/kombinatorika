@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Комбинаторика с анимациями — 10 класс</title>
+<meta name="description" content="Вся школьная комбинаторика: правила сложения и умножения, перестановки, размещения, сочетания — без повторений и с повторениями. Теория, интерактивные анимации, задачи и тренажёр.">
+<link rel="stylesheet" href="vendor/fonts/fonts.css">
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F2B33D'/><text x='16' y='23' font-size='18' text-anchor='middle' font-family='Arial' font-weight='700' fill='%231E2A44'>n!</text></svg>">
+</head>
+<body>
+<div class="topbar"><button id="menuBtn" aria-label="Открыть меню">☰ Темы</button><a class="brand" href="#/home">Комбинаторика</a></div>
+<div class="app">
+<aside class="side" id="side">
+  <a class="brand" href="#/home"><span class="dot">n!</span>Комбинаторика</a>
+  <ul class="nav">
+    <li><a href="#/home"><span class="k">0</span>Карта темы</a></li>
+    <li class="group">Основа</li>
+    <li><a href="#/rules"><span class="k">1</span>Правила «и» / «или»</a></li>
+    <li class="group">Без повторений</li>
+    <li><a href="#/perm"><span class="k">2 · P</span>Перестановки</a></li>
+    <li><a href="#/arr"><span class="k">3 · A</span>Размещения</a></li>
+    <li><a href="#/comb"><span class="k">4 · C</span>Сочетания</a></li>
+    <li class="group">С повторениями</li>
+    <li><a href="#/arrrep"><span class="k">5 · Ā</span>Размещения</a></li>
+    <li><a href="#/permrep"><span class="k">6 · P̄</span>Перестановки</a></li>
+    <li><a href="#/combrep"><span class="k">7 · C̄</span>Сочетания</a></li>
+    <li class="group">Практика</li>
+    <li><a href="#/choose"><span class="k">?</span>Какую формулу взять</a></li>
+    <li><a href="#/trainer"><span class="k">∞</span>Тренажёр</a></li>
+    <li><a href="#/sheet"><span class="k">≡</span>Шпаргалка</a></li>
+  </ul>
+</aside>
+
+<main class="main">
+
+<!-- ================= HOME ================= -->
+<section class="page" data-page="home">
+  <span class="eyebrow">10 класс · раздел «Элементы комбинаторики»</span>
+  <h1>Комбинаторика, которую видно</h1>
+  <p class="lead">Комбинаторика отвечает на вопрос «сколько способов?». Здесь каждая формула не заучивается, а «собирается» на глазах: крутите замок, переставляйте шарики, раскладывайте пирожные по полкам — и считайте вместе с анимацией.</p>
+  <div class="demo" data-demo="heroLock"></div>
+  <h2>Семь тем — одна идея</h2>
+  <p>Почти всё в комбинаторике выводится из <b>правила умножения</b>. Дальше формулы отличаются ответами на два вопроса: <span class="tag or">важен ли порядок?</span> и <span class="tag bl">можно ли повторять?</span></p>
+  <div class="topics">
+    <a class="topic" href="#/rules"><span class="n">Тема 1</span><h3>Правила «и» / «или»</h3><div class="f">$m\cdot n$ и $m+n$ — фундамент всего</div></a>
+    <a class="topic" href="#/perm"><span class="n">Тема 2 · порядок важен, все элементы</span><h3>Перестановки</h3><div class="f">$P_n=n!$</div></a>
+    <a class="topic" href="#/arr"><span class="n">Тема 3 · порядок важен, часть элементов</span><h3>Размещения</h3><div class="f">$A_n^k=\dfrac{n!}{(n-k)!}$</div></a>
+    <a class="topic" href="#/comb"><span class="n">Тема 4 · порядок не важен</span><h3>Сочетания</h3><div class="f">$C_n^k=\dfrac{n!}{k!\,(n-k)!}$</div></a>
+    <a class="topic" href="#/arrrep"><span class="n">Тема 5 · порядок важен, повторы можно</span><h3>Размещения с повторениями</h3><div class="f">$\overline{A}_n^k=n^k$</div></a>
+    <a class="topic" href="#/permrep"><span class="n">Тема 6 · есть одинаковые элементы</span><h3>Перестановки с повторениями</h3><div class="f">$P_n(n_1,\dots,n_k)=\dfrac{n!}{n_1!\cdots n_k!}$</div></a>
+    <a class="topic" href="#/combrep"><span class="n">Тема 7 · порядок не важен, повторы можно</span><h3>Сочетания с повторениями</h3><div class="f">$\overline{C}_n^k=C_{n+k-1}^k$</div></a>
+    <a class="topic" href="#/choose"><span class="n">Помощник</span><h3>Какую формулу взять?</h3><div class="f">Три вопроса — и формула найдена</div></a>
+    <a class="topic" href="#/trainer"><span class="n">Практика</span><h3>Тренажёр</h3><div class="f">Бесконечные задачи с проверкой и решением</div></a>
+  </div>
+</section>
+
+<!-- ================= RULES ================= -->
+<section class="page" data-page="rules">
+  <span class="eyebrow">Тема 1 · основа комбинаторики</span>
+  <h1>Правила сложения и умножения</h1>
+  <p class="lead">Если выбор делается в несколько шагов подряд — умножаем. Если выбираем один из нескольких несовместных вариантов — складываем.</p>
+  <div class="demo" data-demo="tree"></div>
+  <div class="grid2">
+    <article class="card def"><h3>Правило умножения («и»)</h3><p>Если действие $A$ можно выполнить $m$ способами, а <b>после него</b> действие $B$ — $n$ способами, то оба действия ($A$ <b>и</b> $B$) можно выполнить $m\cdot n$ способами.</p><p>Правило обобщается на любое число шагов: $n_1\cdot n_2\cdot\ldots\cdot n_k$. Это <b>основное правило комбинаторики</b>.</p></article>
+    <article class="card def"><h3>Правило сложения («или»)</h3><p>Если действие $A$ можно выполнить $m$ способами, а взаимоисключающее действие $B$ — $n$ способами, то <b>одно из них</b> ($A$ <b>или</b> $B$) можно выполнить $m+n$ способами.</p><p>Главное условие — варианты не пересекаются: ни один способ не посчитан дважды.</p></article>
+  </div>
+  <div class="grid2">
+    <article class="card"><h3>Пример: дороги на гору</h3><p>На вершину ведут 3 дороги. Подняться <b>и</b> спуститься: $3\cdot 3=9$ способов. Если спускаться по другой дороге: $3\cdot 2=6$.</p></article>
+    <article class="card"><h3>Пример: из A в D</h3><p>Из A в B — 4 маршрута, из B в D — 3; из A в C — 2, из C в D — 2. Через B: $4\cdot3=12$, через C: $2\cdot2=4$. Всего: $12+4=16$.</p></article>
+  </div>
+  <div class="mistake">Складывать, когда нужно умножать. Ищите связку: «сначала… потом…», «и… и…» — это умножение; «либо… либо…» — сложение.</div>
+  <h2>Задачи</h2>
+  <div class="tasks">
+    <div class="task" data-answer="12"><span class="lvl">A</span><span class="num">1.</span>В столовой 4 первых блюда и 3 вторых. Сколькими способами можно выбрать обед из первого и второго?<details><summary>Решение</summary><div>Два шага подряд — умножаем: $4\cdot3=12$.</div></details></div>
+    <div class="task" data-answer="7"><span class="lvl">A</span><span class="num">2.</span>В библиотеке 4 разных романа и 3 разных сборника стихов. Сколькими способами можно взять <b>одну</b> книгу?<details><summary>Решение</summary><div>Либо роман, либо стихи — складываем: $4+3=7$.</div></details></div>
+    <div class="task" data-answer="16"><span class="lvl">B</span><span class="num">3.</span>(№3.1) Из A в D можно проехать через B или через C. A→B: 4 маршрута, B→D: 3, A→C: 2, C→D: 2. Сколько всего способов?<details><summary>Решение</summary><div>$4\cdot3+2\cdot2=12+4=16$.</div></details></div>
+    <div class="task" data-answer="45"><span class="lvl">C</span><span class="num">4.</span>Сколько существует двузначных чисел, у которых обе цифры нечётные или обе чётные?<details><summary>Решение</summary><div>Обе нечётные: $5\cdot5=25$. Обе чётные: первая из $\{2,4,6,8\}$, вторая из 5 чётных: $4\cdot5=20$. Всего $25+20=45$.</div></details></div>
+  </div>
+</section>
+
+<!-- ================= PERMUTATIONS ================= -->
+<section class="page" data-page="perm">
+  <span class="eyebrow">Тема 2 · без повторений · порядок важен · все элементы</span>
+  <h1>Перестановки</h1>
+  <p class="lead">Сколькими способами можно расставить в ряд $n$ разных предметов? На первое место — любой из $n$, на второе — любой из оставшихся $n-1$, и так далее.</p>
+  <div class="hero-formula">$P_n=n!=1\cdot2\cdot3\cdot\ldots\cdot n$</div>
+  <div class="demo" data-demo="perm"></div>
+  <div class="grid2">
+    <article class="card def"><h3>Определение</h3><p><b>Перестановка</b> из $n$ элементов — любое упорядоченное расположение всех $n$ разных элементов. Число перестановок $P_n=n!$ («эн факториал»). По договорённости $0!=1$.</p></article>
+    <article class="card"><h3>Почему $n!$</h3><ol class="steps"><li>1-е место: $n$ вариантов.</li><li>2-е место: $n-1$ (один элемент уже занят).</li><li>…последнее место: 1 вариант.</li><li>По правилу умножения: $n(n-1)\cdots1=n!$.</li></ol></article>
+  </div>
+  <div class="card" style="margin-top:20px"><h3>Факториалы растут очень быстро</h3><p>$3!=6,\ 4!=24,\ 5!=120,\ 6!=720,\ 7!=5040,\ 10!=3\,628\,800$. Колоду из 36 карт можно перемешать $36!\approx3{,}7\cdot10^{41}$ способами — больше, чем атомов в Земле.</p></div>
+  <div class="mistake">Использовать перестановки, когда выбирают не все элементы (например, 3 призёра из 10). Тогда нужны размещения.</div>
+  <h2>Задачи</h2>
+  <div class="tasks">
+    <div class="task" data-answer="120"><span class="lvl">A</span><span class="num">1.</span>Сколькими способами можно поставить на полку 5 разных книг?<details><summary>Решение</summary><div>$P_5=5!=120$.</div></details></div>
+    <div class="task" data-answer="720"><span class="lvl">A</span><span class="num">2.</span>Сколько буквосочетаний можно получить, переставляя буквы слова «ПРИЗМА»?<details><summary>Решение</summary><div>В слове «ПРИЗМА» 6 разных букв: $6!=720$. (А вот в слове «ЗАДАЧИ» две буквы «А» — это уже перестановки с повторениями, тема 6.)</div></details></div>
+    <div class="task" data-answer="48"><span class="lvl">B</span><span class="num">3.</span>4 мальчика и девочка Аня садятся в ряд из 5 стульев. Сколько способов, если Аня сидит с краю?<details><summary>Решение</summary><div>Ане — 2 крайних места, мальчиков расставляем на остальные 4: $2\cdot4!=48$.</div></details></div>
+    <div class="task" data-answer="240"><span class="lvl">C</span><span class="num">4.</span>Сколькими способами можно рассадить в ряд 6 человек так, чтобы двое друзей сидели рядом?<details><summary>Решение</summary><div>«Склеим» друзей в один блок: переставляем 5 объектов — $5!$, внутри блока 2 порядка: $2\cdot5!=240$.</div></details></div>
+  </div>
+</section>
+
+<!-- ================= ARRANGEMENTS ================= -->
+<section class="page" data-page="arr">
+  <span class="eyebrow">Тема 3 · без повторений · порядок важен · часть элементов</span>
+  <h1>Размещения</h1>
+  <p class="lead">Из $n$ разных элементов выбираем $k$ и ставим их по местам. Как пьедестал: кто первый, кто второй, кто третий — важно.</p>
+  <div class="hero-formula">$A_n^k=n(n-1)\cdots(n-k+1)=\dfrac{n!}{(n-k)!}$</div>
+  <div class="demo" data-demo="podium"></div>
+  <div class="grid2">
+    <article class="card def"><h3>Определение</h3><p><b>Размещение</b> из $n$ элементов по $k$ ($k\le n$) — упорядоченный набор из $k$ <b>различных</b> элементов. Два размещения различны, если отличаются составом <b>или порядком</b>.</p></article>
+    <article class="card"><h3>Вывод формулы</h3><p>На 1-е место — $n$ вариантов, на 2-е — $n-1$, …, на $k$-е — $n-k+1$. Перемножаем $k$ множителей:</p><p>$A_n^k=n(n-1)\cdots(n-k+1)$. Например, $A_{10}^3=10\cdot9\cdot8=720$.</p><p>При $k=n$ получаем перестановки: $A_n^n=n!=P_n$.</p></article>
+  </div>
+  <div class="mistake">Делить на $k!$ там, где порядок важен. «Староста и заместитель» — разные роли, значит порядок важен: $A_{25}^2$, а не $C_{25}^2$.</div>
+  <h2>Задачи</h2>
+  <div class="tasks">
+    <div class="task" data-answer="90"><span class="lvl">A</span><span class="num">1.</span>Из 10 учеников выбирают старосту и его заместителя. Сколькими способами?<details><summary>Решение</summary><div>$A_{10}^2=10\cdot9=90$.</div></details></div>
+    <div class="task" data-answer="504"><span class="lvl">A</span><span class="num">2.</span>Сколько трёхзначных чисел с различными цифрами можно составить из цифр 1–9?<details><summary>Решение</summary><div>$A_9^3=9\cdot8\cdot7=504$.</div></details></div>
+    <div class="task" data-answer="4536"><span class="lvl">B</span><span class="num">3.</span>Сколько существует четырёхзначных чисел, все цифры которых различны?<details><summary>Решение</summary><div>Первая цифра — не 0: 9 вариантов, далее $9\cdot8\cdot7$: $9\cdot9\cdot8\cdot7=4536$. Или $A_{10}^4-A_9^3=5040-504=4536$.</div></details></div>
+    <div class="task" data-answer="328"><span class="lvl">C</span><span class="num">4.</span>Сколько существует чётных трёхзначных чисел с различными цифрами?<details><summary>Решение</summary><div>Последняя 0: $9\cdot8=72$. Последняя 2, 4, 6 или 8: первая — не 0 и не последняя (8 вариантов), средняя — 8: $4\cdot8\cdot8=256$. Всего $72+256=328$.</div></details></div>
+  </div>
+</section>
+
+<!-- ================= COMBINATIONS ================= -->
+<section class="page" data-page="comb">
+  <span class="eyebrow">Тема 4 · без повторений · порядок не важен</span>
+  <h1>Сочетания</h1>
+  <p class="lead">Выбираем $k$ элементов из $n$, но порядок не важен: команда {Аня, Боря} — то же самое, что {Боря, Аня}. Каждое сочетание мы посчитали в размещениях $k!$ раз — значит, делим.</p>
+  <div class="hero-formula">$C_n^k=\dfrac{A_n^k}{k!}=\dfrac{n!}{k!\,(n-k)!}$</div>
+  <div class="demo" data-demo="merge"></div>
+  <div class="grid2">
+    <article class="card def"><h3>Определение</h3><p><b>Сочетание</b> из $n$ элементов по $k$ — любое <b>подмножество</b> из $k$ различных элементов. Сочетания различаются только составом.</p><p>Свойства: $C_n^k=C_n^{n-k}$, $\;C_n^0=C_n^n=1$, $\;C_n^k+C_n^{k+1}=C_{n+1}^{k+1}$.</p></article>
+    <article class="card"><h3>Треугольник Паскаля</h3><p>Каждое число — сумма двух над ним. В строке $n$ стоят $C_n^0, C_n^1,\dots,C_n^n$. Нажмите на клетку ниже, чтобы увидеть, из каких двух она складывается.</p></article>
+  </div>
+  <div class="demo" data-demo="pascal"></div>
+  <div class="mistake">Использовать сочетания, когда у выбранных есть роли или места (капитан, 1-е место, порядок цифр в числе). Роли = порядок важен = размещения.</div>
+  <h2>Задачи</h2>
+  <div class="tasks">
+    <div class="task" data-answer="35"><span class="lvl">A</span><span class="num">1.</span>Из 7 учеников нужно выбрать троих на олимпиаду. Сколькими способами?<details><summary>Решение</summary><div>$C_7^3=\dfrac{7\cdot6\cdot5}{3!}=35$.</div></details></div>
+    <div class="task" data-answer="45"><span class="lvl">A</span><span class="num">2.</span>10 человек обменялись рукопожатиями, каждый с каждым. Сколько было рукопожатий?<details><summary>Решение</summary><div>Рукопожатие — пара без порядка: $C_{10}^2=45$.</div></details></div>
+    <div class="task" data-answer="35"><span class="lvl">B</span><span class="num">3.</span>Сколько диагоналей у выпуклого десятиугольника?<details><summary>Решение</summary><div>Все отрезки между вершинами $C_{10}^2=45$, минус 10 сторон: $35$.</div></details></div>
+    <div class="task" data-answer="60"><span class="lvl">C</span><span class="num">4.</span>В кружке 4 мальчика и 5 девочек. Сколькими способами выбрать команду из 2 мальчиков и 2 девочек?<details><summary>Решение</summary><div>Мальчиков <b>и</b> девочек выбираем независимо — умножаем: $C_4^2\cdot C_5^2=6\cdot10=60$.</div></details></div>
+  </div>
+</section>
+
+<!-- ================= ARRANGEMENTS WITH REPETITION ================= -->
+<section class="page" data-page="arrrep">
+  <span class="eyebrow">Тема 5 · с повторениями · порядок важен · §3.1–3.2</span>
+  <h1>Размещения с повторениями</h1>
+  <p class="lead">Выбор «с возвращением»: взятый элемент снова доступен, поэтому на каждом из $k$ мест опять $n$ вариантов. Кодовый замок, PIN-код, пароль.</p>
+  <div class="hero-formula">$\overline{A}_n^k=\underbrace{n\cdot n\cdot\ldots\cdot n}_{k\ \text{раз}}=n^k$</div>
+  <div class="demo" data-demo="lock"></div>
+  <div class="grid2">
+    <article class="card def"><h3>Определение</h3><p>Упорядоченные выборки $k$ элементов <b>с повторениями</b> из множества $n$ элементов называются <b>размещениями с повторениями</b> из $n$ по $k$. Здесь $k$ может быть больше $n$.</p></article>
+    <article class="card"><h3>Как найти $n$ и $k$</h3><ol class="steps"><li><b>Кто выбирает?</b> Их число — $k$ (показатель степени).</li><li><b>Из чего выбирает?</b> Число вариантов — $n$ (основание).</li><li><b>Есть повторы?</b> Да — значит $n^k$.</li></ol></article>
+  </div>
+  <div class="demo" data-demo="lift"></div>
+  <div class="mistake">Перепутать $n$ и $k$. «8 пассажиров по 3 вагонам»: каждый из 8 пассажиров выбирает вагон, поэтому $3^8=6561$, а не $8^3$.</div>
+  <h2>Задачи</h2>
+  <div class="tasks">
+    <div class="task" data-answer="1296"><span class="lvl">A</span><span class="num">1.</span>(№3.7) Пароль из 4 символов составляют из набора {+, *, $, !, C, 3}. Сколько паролей?<details><summary>Решение</summary><div>$\overline{A}_6^4=6^4=1296$.</div></details></div>
+    <div class="task" data-answer="6561"><span class="lvl">A</span><span class="num">2.</span>(№3.3) Сколькими способами можно разместить 8 пассажиров по трём вагонам?<details><summary>Решение</summary><div>Каждый пассажир выбирает 1 из 3 вагонов: $3^8=6561$.</div></details></div>
+    <div class="task" data-answer="81"><span class="lvl">B</span><span class="num">3.</span>(№3.16) На панели 4 лампочки, каждая горит зелёным, красным или жёлтым. Сколько сигналов?<details><summary>Решение</summary><div>$3^4=81$.</div></details></div>
+    <div class="task" data-answer="9000"><span class="lvl">B</span><span class="num">4.</span>Сколько существует четырёхзначных чисел (цифры могут повторяться)?<details><summary>Решение</summary><div>Первая цифра — не 0: $9\cdot10^3=9000$.</div></details></div>
+    <div class="task" data-answer="252"><span class="lvl">C</span><span class="num">5.</span>(№3.18) Сколько трёхзначных чисел содержат хотя бы одну цифру 5?<details><summary>Решение</summary><div>От противного: всего $900$, без пятёрок $8\cdot9\cdot9=648$. Ответ: $900-648=252$.</div></details></div>
+    <div class="task" data-answer="62"><span class="lvl">C</span><span class="num">6.</span>Буква азбуки Морзе — от 1 до 5 символов «точка» или «тире». Сколько букв можно закодировать?<details><summary>Решение</summary><div>$2+2^2+2^3+2^4+2^5=62$.</div></details></div>
+  </div>
+</section>
+
+<!-- ================= PERMUTATIONS WITH REPETITION ================= -->
+<section class="page" data-page="permrep">
+  <span class="eyebrow">Тема 6 · с повторениями · одинаковые элементы · §3.3–3.4</span>
+  <h1>Перестановки с повторениями</h1>
+  <p class="lead">Если среди $n$ элементов есть одинаковые, то перестановки одинаковых между собой ничего не меняют. Каждое «слово» посчитано в $n!$ столько раз, сколько можно переставить одинаковые буквы, — делим.</p>
+  <div class="hero-formula">$P_n(n_1,n_2,\dots,n_k)=\dfrac{n!}{n_1!\,n_2!\cdots n_k!},\quad n_1+\dots+n_k=n$</div>
+  <div class="demo" data-demo="word"></div>
+  <div class="grid2">
+    <article class="card def"><h3>Определение</h3><p>Элемент $a_1$ повторяется $n_1$ раз, $a_2$ — $n_2$ раз, …, $a_k$ — $n_k$ раз. Расстановки всех $n$ элементов в ряд называются <b>перестановками с повторениями</b>.</p></article>
+    <article class="card"><h3>Пример «ПАПКА»</h3><p>5 букв: П — 2 раза, А — 2 раза, К — 1 раз.</p><p>$P_5(2,2,1)=\dfrac{5!}{2!\,2!\,1!}=\dfrac{120}{4}=30$.</p><p>Единичные факториалы можно не писать, но комментарий о повторяющихся буквах обязателен.</p></article>
+  </div>
+  <div class="mistake">Посчитать $n!$, не заметив одинаковых букв, или посчитать $n^n$ (это размещения с повторениями). Сначала выпишите, какая буква сколько раз встречается.</div>
+  <h2>Задачи</h2>
+  <div class="tasks">
+    <div class="task" data-answer="15"><span class="lvl">A</span><span class="num">1.</span>(№3.31) Сколькими способами можно расположить в ряд 2 зелёные и 4 красные лампочки?<details><summary>Решение</summary><div>$P_6(2,4)=\dfrac{6!}{2!\,4!}=15$.</div></details></div>
+    <div class="task" data-answer="151200"><span class="lvl">A</span><span class="num">2.</span>(№3.27) Сколько буквосочетаний можно получить из букв слова «МАТЕМАТИКА»?<details><summary>Решение</summary><div>10 букв: М — 2, А — 3, Т — 2, Е, И, К — по 1. $\dfrac{10!}{2!\,3!\,2!}=151\,200$.</div></details></div>
+    <div class="task" data-answer="2520"><span class="lvl">B</span><span class="num">3.</span>Сколько буквосочетаний из букв слова «МИССИСИПИ»?<details><summary>Решение</summary><div>9 букв: И — 4, С — 3, М, П — по 1. $\dfrac{9!}{4!\,3!}=2520$.</div></details></div>
+    <div class="task" data-answer="96"><span class="lvl">C</span><span class="num">4.</span>Сколькими способами можно переставить буквы слова «ОГОРОД», чтобы три буквы «О» не стояли рядом?<details><summary>Решение</summary><div>Всего $\dfrac{6!}{3!}=120$. Три «О» рядом — «склеим» их: $4!=24$. Ответ: $120-24=96$.</div></details></div>
+  </div>
+</section>
+
+<!-- ================= COMBINATIONS WITH REPETITION ================= -->
+<section class="page" data-page="combrep">
+  <span class="eyebrow">Тема 7 · с повторениями · порядок не важен · §3.5–3.6</span>
+  <h1>Сочетания с повторениями</h1>
+  <p class="lead">Покупаем $k$ пирожных, есть $n$ видов, пирожные одного вида одинаковые. Важно только, сколько взяли каждого вида. Трюк: каждую покупку можно закодировать «шариками и перегородками».</p>
+  <div class="hero-formula">$\overline{C}_n^k=C_{n+k-1}^k=\dfrac{(n+k-1)!}{k!\,(n-1)!}$</div>
+  <div class="demo" data-demo="stars"></div>
+  <div class="grid2">
+    <article class="card def"><h3>Определение</h3><p><b>Сочетания с повторениями</b> из $n$ видов по $k$ — наборы из $k$ элементов, в которых элементы одного вида могут повторяться, а порядок не важен. Наборы различаются количеством элементов хотя бы одного вида.</p></article>
+    <article class="card"><h3>Вывод: шарики и перегородки</h3><p>Покупка 3 корзиночки, 1 наполеон, 2 песочных, 1 эклер записывается как $\bullet\bullet\bullet\,|\,\bullet\,|\,\bullet\bullet\,|\,\bullet$: $k=7$ шариков и $n-1=3$ перегородки.</p><p>Каждая покупка — это перестановка с повторениями из $k$ шариков и $n-1$ перегородок: $P_{n+k-1}(k,\,n-1)=C_{n+k-1}^k$. Для примера: $C_{10}^7=120$.</p></article>
+  </div>
+  <div class="mistake">Взять $C_{n+k-1}^n$ вместо $C_{n+k-1}^k$ (или перепутать в знаменателе). Проверка: в знаменателе $k!\,(n-1)!$ — шарики и перегородки. Кстати, в учебнике (§3.6, пример 1) для 5 цветов и 7 листов напечатано 462, а верно $C_{11}^7=330$.</div>
+  <h2>Задачи</h2>
+  <div class="tasks">
+    <div class="task" data-answer="28"><span class="lvl">A</span><span class="num">1.</span>(№3.61) Булочки трёх видов: с маком, изюмом и повидлом. Сколькими способами можно купить 6 булочек?<details><summary>Решение</summary><div>$\overline{C}_3^6=C_8^6=28$.</div></details></div>
+    <div class="task" data-answer="55"><span class="lvl">A</span><span class="num">2.</span>В кондитерской 3 вида пирожных. Сколькими способами можно купить 9 пирожных?<details><summary>Решение</summary><div>$\overline{C}_3^9=C_{11}^9=55$.</div></details></div>
+    <div class="task" data-answer="330"><span class="lvl">B</span><span class="num">3.</span>Цветная бумага пяти цветов. Сколькими способами можно купить 7 листов?<details><summary>Решение</summary><div>$\overline{C}_5^7=C_{11}^7=\dfrac{11!}{7!\,4!}=330$.</div></details></div>
+    <div class="task" data-answer="1820"><span class="lvl">B</span><span class="num">4.</span>(№3.62) Бумага пяти сортов. Сколькими способами можно купить 12 листов?<details><summary>Решение</summary><div>$C_{16}^{12}=C_{16}^4=1820$.</div></details></div>
+    <div class="task" data-answer="10"><span class="lvl">C</span><span class="num">5.</span>Сколькими способами можно купить 6 булочек трёх видов, если каждого вида нужно взять хотя бы одну?<details><summary>Решение</summary><div>Сразу кладём по одной каждого вида, остаётся докупить 3 булочки из 3 видов: $C_{5}^3=10$.</div></details></div>
+  </div>
+</section>
+
+<!-- ================= CHOOSER ================= -->
+<section class="page" data-page="choose">
+  <span class="eyebrow">Помощник</span>
+  <h1>Какую формулу взять?</h1>
+  <p class="lead">Ответьте на вопросы о своей задаче — помощник покажет формулу и похожий пример.</p>
+  <div class="demo" data-demo="chooser"></div>
+</section>
+
+<!-- ================= TRAINER ================= -->
+<section class="page" data-page="trainer">
+  <span class="eyebrow">Практика</span>
+  <h1>Тренажёр</h1>
+  <p class="lead">Задачи генерируются заново каждый раз. Выберите темы, решите и проверьте. Если ошиблись — посмотрите разбор.</p>
+  <div id="trainer"></div>
+</section>
+
+<!-- ================= SHEET ================= -->
+<section class="page" data-page="sheet">
+  <span class="eyebrow">Шпаргалка</span>
+  <h1>Все формулы на одной странице</h1>
+  <p class="lead">$n$ — сколько всего элементов (видов), $k$ — сколько выбираем.</p>
+  <div class="sheet-wrap" style="margin-top:24px"><table class="sheet">
+    <tr><th>Что считаем</th><th>Порядок</th><th>Повторы</th><th>Формула</th><th>Пример</th></tr>
+    <tr><td><b>Перестановки</b></td><td>важен</td><td>нет, все элементы</td><td>$P_n=n!$</td><td>5 книг на полке: $120$</td></tr>
+    <tr><td><b>Размещения</b></td><td>важен</td><td>нет</td><td>$A_n^k=\dfrac{n!}{(n-k)!}$</td><td>староста и зам. из 10: $90$</td></tr>
+    <tr><td><b>Сочетания</b></td><td>не важен</td><td>нет</td><td>$C_n^k=\dfrac{n!}{k!(n-k)!}$</td><td>3 из 7 на олимпиаду: $35$</td></tr>
+    <tr><td><b>Размещения с повторениями</b></td><td>важен</td><td>да</td><td>$\overline{A}_n^k=n^k$</td><td>PIN из 4 цифр: $10^4$</td></tr>
+    <tr><td><b>Перестановки с повторениями</b></td><td>важен</td><td>одинаковые элементы</td><td>$\dfrac{n!}{n_1!\cdots n_k!}$</td><td>«ПАПКА»: $30$</td></tr>
+    <tr><td><b>Сочетания с повторениями</b></td><td>не важен</td><td>да</td><td>$\overline{C}_n^k=C_{n+k-1}^k$</td><td>7 пирожных 4 видов: $120$</td></tr>
+  </table></div>
+  <div class="grid3" style="margin-top:20px">
+    <div class="card"><h3>Правило умножения</h3><p>«и», шаги подряд: $m\cdot n$</p></div>
+    <div class="card"><h3>Правило сложения</h3><p>«или», варианты не пересекаются: $m+n$</p></div>
+    <div class="card"><h3>От противного</h3><p>«хотя бы один» = всё минус «ни одного»</p></div>
+  </div>
+</section>
+
+<footer class="foot">Сделано для уроков математики 10 класса НИШ по учебнику «Математика 10», часть 1, раздел 3. Анимации работают прямо в браузере, без установки.</footer>
+</main>
+</div>
+<script defer src="vendor/katex/katex.min.js"></script>
+<script defer src="vendor/katex/auto-render.min.js"></script>
+<script defer src="js/core.js"></script>
+<script defer src="js/demos.js"></script>
+<script defer src="js/trainer.js"></script>
+</body>
+</html>
